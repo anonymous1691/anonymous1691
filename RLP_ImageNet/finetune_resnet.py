@@ -129,7 +129,8 @@ def main():
         flops, params = get_model_complexity_info(model, (3, 224, 224), as_strings=True, print_per_layer_stat=True)
         print('Flops:  ' + flops)
         print('Params: ' + params)
-    checkpoint_pruned = torch.load('/mnt/cephfs_new_wj/cv/xiaxin/GAL_ImageNet/bsp/experiment/checkpoint/model_best.pt', map_location=torch.device(f"cuda:{args.gpus[0]}"))
+    pruned_dir = args.pruned_dir
+    checkpoint_pruned = torch.load(pruned_dir, map_location=torch.device(f"cuda:{args.gpus[0]}"))
     model = torch.nn.DataParallel(model)
     #
     # new_state_dict_pruned = OrderedDict()

@@ -44,7 +44,12 @@ parser.add_argument(
     type=str, 
     default=None,
     help='Path to the model to be fine tuned.')
-    
+
+parser.add_argument(
+    '--pruned_dir',
+    type=str,
+    default=None,
+    help='Path to the pruned model.')
 ## Training
 parser.add_argument(
     '--student_model',
